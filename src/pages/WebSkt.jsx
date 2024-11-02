@@ -48,7 +48,7 @@ const WebSkt = () => {
 
 
     useEffect(() => {
-        const newSocket = io('http://localhost:5000');
+        const newSocket = io('https://nexier-update-1.onrender.com');
         setSocket(newSocket);
 
         newSocket.on('connect', () => {
