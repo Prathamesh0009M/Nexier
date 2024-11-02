@@ -12,7 +12,6 @@ const UpdateSlider = () => {
     return (
         <div className=''>
             <Swiper
-                slidesPerView={2}
                 spaceBetween={45}
                 loop={true}
                 freeMode={true}
@@ -21,6 +20,16 @@ const UpdateSlider = () => {
                     disableOnInteraction: false,
                 }}
                 modules={[FreeMode, Pagination, Autoplay, Navigation]}
+                breakpoints={{
+                    // Mobile view (show 1 slide)
+                    0: {
+                        slidesPerView: 1,
+                    },
+                    // Desktop view (show 2 slides)
+                    768: {
+                        slidesPerView: 2,
+                    },
+                }}
                 className='w-full'
             >
                 {
@@ -31,7 +40,6 @@ const UpdateSlider = () => {
                                 alt={`slide-${index}`}
                                 className="w-full h-auto object-cover shadow-custom-xl border-custom border-custom-gray rounded-2xl"
                             />
-
                         </SwiperSlide>
                     ))
                 }
