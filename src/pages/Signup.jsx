@@ -180,7 +180,7 @@ const Signup = () => {
                                 </div>
 
 
-                                <IconBtn type={"submit"} text={'Create Account'} customClasses={'w-full pl-40'} />
+                                <IconBtn type={"submit"} text={'Create Account'} customClasses={'w-full flex item-center justify-center'} />
                             </form>
                         </div>
                     )}
