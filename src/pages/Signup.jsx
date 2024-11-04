@@ -44,7 +44,7 @@ const Signup = () => {
     };
 
     return (
-        <div className="flex flex-col-reverse md:flex-row h-screen mt-12">
+        <div className="flex flex-col-reverse md:flex-row h-screen mt-24">
 
 
             <div className="flex-1 flex justify-center items-center bg-richblack-900 p-6">
