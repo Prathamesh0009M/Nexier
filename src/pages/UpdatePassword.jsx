@@ -83,7 +83,7 @@ const UpdatePassword = () => {
                         <IconBtn
                                 text={'Reset Password'}
                                 type={"submit"}
-                                customClasses={'w-full pl-[155px]'}
+                                customClasses={'w-full flex item-center justify-center'}
 
                         />
 
