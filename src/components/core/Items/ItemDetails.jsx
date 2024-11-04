@@ -64,7 +64,7 @@ const ItemDetails = () => {
     }, [itemId, dispatch]);
 
     return (
-        <div className='mt-16 relative mx-auto flex flex-col w-full max-w-6xl items-center p-4 sm:p-6 bg-gray-800 text-white rounded-lg shadow-lg'>
+        <div className='mt-4 relative mx-auto flex flex-col w-full max-w-6xl items-center p-4 sm:p-6 bg-gray-800 text-white rounded-lg shadow-lg'>
             <div className='flex flex-col md:flex-row gap-6 w-full'>
                 {/* Item Image and Details */}
                 <div className='w-full md:w-1/2'>
