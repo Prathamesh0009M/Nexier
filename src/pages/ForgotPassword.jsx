@@ -57,7 +57,7 @@ const ForgotPassword = () => {
 
                                 <IconBtn
                                     text={!emailSent ? "Reset Password" : "Resend Email"}
-                                    customClasses={'w-full pl-36'}
+                                    customClasses={'w-full flex item-center justify-center'}
                                 />
 
                                 <div className="text-center mt-6">
