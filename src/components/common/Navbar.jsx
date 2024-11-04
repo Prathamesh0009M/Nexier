@@ -291,7 +291,7 @@ const Navbar = () => {
                 </div>
 
 
-               <div className="flex items-center gap-2 w-full justify-between p-2  md:gap-6 md:p-4">
+              <div className="flex items-center gap-2 w-full justify-between p-2  md:gap-6 md:p-4">
                          {/* Category Dropdown */}
                       <div className="flex-1 max-w-[150px] md:max-w-[250px]">
                         <select
@@ -347,6 +347,8 @@ const Navbar = () => {
                            </div>
                        )}
                    </div>
+    
+                </div>
     
                 </div>
             <hr className=" border-richblack-500 " />
