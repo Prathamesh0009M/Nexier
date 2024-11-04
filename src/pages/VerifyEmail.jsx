@@ -63,7 +63,7 @@ const VerifyEmail = () => {
                         <IconBtn
                             text={'Verify Email'}
                                 type={'submit'}
-                                customClasses={'pl-40'}
+                                customClasses={'w-full flex item-center justify-center'}
                         />
                     </form>
 
