@@ -64,7 +64,7 @@ const Login = () => {
                   {showPassword ? <IoEye fontSize={24} /> : <IoEyeOffOutline fontSize={24} />}
                 </span>
               </div>
-              <IconBtn text={'Sign In'} type={'submit'} customClasses={'item-center w-full pl-48 '} />
+              <IconBtn text={'Sign In'} type={'submit'} customClasses={'w-full flex item-center justify-center'} />
             </form>
 
             <div className="mt-4 text-center text-gray-300 cursor-pointer" onClick={() => navigate("/forgot-password")}>
