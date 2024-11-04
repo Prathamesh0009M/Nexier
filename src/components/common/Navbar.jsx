@@ -274,7 +274,7 @@ const Navbar = () => {
             
              w-11/12 max-w-maxContent
             '>
-                <div className='mb-5 flex items-center md:flex items-center border-2 border-black rounded-lg p-1'>
+                <div className='mb-1 flex items-center md:flex items-center border-2 border-black rounded-lg p-1'>
                     <input
                         className='w-[330px] items-center md:w-[400px] h-9 text-black pl-3 border-none rounded-l-lg '
                         placeholder='Search Nexier.com'
