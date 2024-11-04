@@ -291,72 +291,64 @@ const Navbar = () => {
                 </div>
 
 
-                <div className='flex'>
-                    {/* <div className='flex gap-x-16 xl:flex md:gap-x-2'> */}
-                    <div>
+               <div className="flex items-center gap-2 w-full justify-between p-2  md:gap-6 md:p-4">
+                         {/* Category Dropdown */}
+                      <div className="flex-1 max-w-[150px] md:max-w-[250px]">
                         <select
-                            onChange={handleCategoryChange}
-                            className='bg-transparent border border-white text-white cursor-pointer rounded-lg px-3 h-10 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-yellow-400 '
-                        >
-                            <option className='text-white' value="">All Category</option>
-                            {subLinks.map((category, index) => (
-                                <option
-                                    className='text-black'
-                                    key={index}
-                                    value={category.slug}
-                                >
-                                    {category.name}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                    {/* <div className='text-white w-26 items-center p-2 rounded-lg border-[3px] border-transparent flex relative left-6 gap-x-2 animate-zigzag-light shadow-lg transition-all duration-300 
-                  cursor-pointer hover:scale-95 transition-all duration-100 flex items-center gap-1'
-                        onClick={() => handleNav()}
-                    > */}
-                    <div className='relative w-26 ml-3 flex items-center text-white cursor-pointer' onClick={() => handleNav()}>
-                        {/* Corner Elements */}
-
-                        {/* Main Content */}
-                        <div className='flex items-center border-2 border-aqua-500 rounded-lg p-1'>
-                            <FaPlus />
-                            <span className='text-white ml-2'>SELL</span>
+                                     onChange={handleCategoryChange}
+                        className="bg-transparent border border-white text-white cursor-pointer rounded-lg px-2 h-10 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-yellow-400 w-full hover:bg-gray-700 md:h-12"
+                        defaultValue=""
+                                      >
+                              <option className="text-white" value="" disabled>
+                                  All Category
+                              </option>
+                              {subLinks.map((category, index) => (
+                                  <option className="text-black" key={index} value={category.slug}>
+                                      {category.name}
+                                  </option>
+                              ))}
+                          </select>
+                      </div>
+                  
+                      {/* Sell Button */}
+                      <div
+                          className="flex items-center justify-center border-2 border-aqua-500 rounded-lg p-1                   cursor-pointer text-white hover:bg-aqua-500 transition duration-300 ease-in-out md:text-lg                   md:px-4 md:h-12"
+                          onClick={handleNav}
+                      >
+                          <FaPlus />
+                          <span className="ml-1">SELL</span>
+                      </div>
+                  
+                      {/* Chat Icon */}
+                                              <div
+                           className="text-2xl text-white cursor-pointer flex items-center hover:text-yellow-400 transition duration-300 ease-in-out md:text-4xl"
+                           onClick={() => (token ? navigate("/chat") : navigate("/login"))}
+                       >
+                           <BsChatDots />
                         </div>
-                    </div>
 
+                   {/* Profile Icon */}
+                   <div className="relative cursor-pointer flex items-center hover:text-yellow-400 transition duration-300 ease-in-out">
+                       {token ? (
+                           <div className="flex items-center gap-x-1" onClick={() => setShowDropdown(!showDropdown)}>
+                               <GoPerson className="text-white text-2xl md:text-4xl" />
+                               {user?.image && (
+                                   <img
+                                       src={`${user.image}?${new Date().getTime()}`}
+                                       alt="Profile"
+                                       className="w-6 h-6 rounded-full object-cover md:w-10 md:h-10"
+                                   />
+                               )}
+                           </div>
+                       ) : (
+                           <div className="flex items-center gap-x-1">
+                               <GoPerson className="text-white text-2xl md:text-4xl" />
+                               <RiArrowDownSLine className="text-lg md:text-2xl" />
+                           </div>
+                       )}
+                   </div>
+    
                 </div>
-
-                <div className='flex'>
-                    <div className='text-3xl text-white relative cursor-pointer'
-                        onClick={() => token ? navigate("/chat") : navigate("/login")}
-                    >
-                        <BsChatDots />
-                    </div>
-
-                    <div>
-                        {
-                            token ? (
-                                <div className=''>
-                                    <div className='h-8 w-32 flex items-center justify-center gap-x-1 relative cursor-pointer '
-                                        onClick={() => setShowDropdown(!showDropdown)}>
-                                        <GoPerson className='text-white text-3xl' />
-                                        {
-                                            token && (
-                                                <img src={user?.image ? `${user.image}?${new Date().getTime()}` : ''} alt="Profile" className='w-8 h-8 rounded-full object-cover' />
-                                            )
-                                        }
-                                    </div>
-                                </div>
-                            ) : (
-                                <div className=' left-8  md:h-8 w-32 flex items-center justify-center gap-x-1 relative cursor-pointer '>
-                                    <GoPerson className='text-white text-3xl' />
-                                    <RiArrowDownSLine />
-                                </div>
-                            )
-                        }
-                    </div>
-                </div>
-            </div>
             <hr className=" border-richblack-500 " />
 
 
