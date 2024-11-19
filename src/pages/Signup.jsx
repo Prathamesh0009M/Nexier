@@ -44,7 +44,7 @@ const Signup = () => {
     };
 
     return (
-        <div className="flex flex-col-reverse md:flex-row h-screen mt-24">
+        <div className="flex flex-col mt-5 md:flex-row h-screen">
 
 
             <div className="flex-1 flex justify-center items-center bg-richblack-900 p-6">
@@ -92,8 +92,8 @@ const Signup = () => {
                                 </div>
 
                                 {/* Flex container for smaller fields */}
-                                <div className="flex flex-wrap gap-4">
-                                    <label className="flex-1 min-w-[150px]">
+                                {/* <div className="flex flex-wrap gap-4"> */}
+                                    {/* <label className="flex-1 min-w-[150px]">
                                         <p>Intrested In:</p>
                                         <input
                                             required
@@ -103,8 +103,8 @@ const Signup = () => {
                                             onChange={handleOnChange}
                                             className='w-full p-4 h-4  bg-richblack-600 text-richblack-5 rounded'
                                         />
-                                    </label>
-                                    <label className="flex-1 min-w-[150px]">
+                                    </label> */}
+                                    {/* <label className="flex-1 min-w-[150px]">
                                         <p>Contact Number <span><sup className='text-red-700'>*</sup></span></p>
                                         <input
                                             required
@@ -114,12 +114,13 @@ const Signup = () => {
                                             onChange={handleOnChange}
                                             className='w-full p-4 h-4  bg-richblack-600 text-richblack-5 rounded'
                                         />
-                                    </label>
+                                    </label> */}
 
 
-                                </div>
+                                {/* </div> */}
+
                                 <div className='flex flex-wrap gap-4'>
-                                    <label className="flex-1 min-w-[150px]">
+                                    {/* <label className="flex-1 min-w-[150px]">
 
                                         <p>PRN NO:  <span><sup className='text-red-700'>*</sup></span> </p>
                                         <input
@@ -130,8 +131,8 @@ const Signup = () => {
                                             onChange={handleOnChange}
                                             className='w-full p-4 h-4  bg-richblack-600 text-richblack-5 rounded'
                                         />
-                                        </label>
-                                        
+                                    </label> */}
+
                                     <label className="flex-1 min-w-[150px]">
 
                                         <p>Year And Branch <span><sup className='text-red-700'>*</sup></span> </p>
