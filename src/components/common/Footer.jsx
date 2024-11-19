@@ -32,6 +32,8 @@ const Footer = () => {
               <li>Email: prathameshj776@gmail.com</li>
               {/* <li>Phone: 7499477290</li> */}
               <li>Address: Dbatu University Campus, Lonere</li>
+              <li>Contact: 7385077290</li>
+              
             </ul>
           </div>
         </div>
