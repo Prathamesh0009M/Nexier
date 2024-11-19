@@ -37,20 +37,40 @@ const TermsAndConditions = () => {
           We respect your privacy and are committed to protecting your personal information. Please refer to our Privacy Policy for details on how we
           collect, use, and safeguard your data.
         </p>
+        <p>
+          <strong>Data Collection:</strong> We collect user information such as full name, mobile number, email address, roll number, and other details to provide a seamless student network on campus.
+        </p>
+        <p>
+          <strong>Data Usage:</strong> Your name and roll number may be displayed to identify users within the platform. Sensitive data, such as mobile numbers, will remain confidential and not visible to other users.
+        </p>
+        <p>
+          <strong>Data Protection:</strong> Your information is securely stored and will not be shared with unauthorized parties.
+        </p>
 
-        <h2 className="text-xl font-semibold mt-4">5. Limitation of Liability</h2>
+        <h2 className="text-xl font-semibold mt-4">5. Refunds and Cancellations Policy</h2>
+        <p>
+          <strong>No Refund Policy:</strong> Refunds are not applicable unless there is a technical issue with Razorpay during the payment process. Refunds in such cases will be processed within <strong>5-7 working days</strong> and credited to the customer’s bank account.
+        </p>
+        <p>
+          <strong>Cancellations:</strong> Orders cannot be canceled once confirmed or shipped.
+        </p>
+        <p>
+          For any payment-related concerns, please contact our support team.
+        </p>
+
+        <h2 className="text-xl font-semibold mt-4">6. Limitation of Liability</h2>
         <p>
           We are not liable for any direct, indirect, incidental, or consequential damages arising from or related to the use of our services. Our
           platform is provided on an "as-is" basis, and we make no warranties of any kind, express or implied.
         </p>
 
-        <h2 className="text-xl font-semibold mt-4">6. Termination</h2>
+        <h2 className="text-xl font-semibold mt-4">7. Termination</h2>
         <p>
           We reserve the right to terminate or suspend your access to our platform at our discretion, without notice, if we believe you have violated
           these terms or engaged in any activity that could harm the platform or other users.
         </p>
 
-        <h2 className="text-xl font-semibold mt-4">7. Governing Law</h2>
+        <h2 className="text-xl font-semibold mt-4">8. Governing Law</h2>
         <p>
           These terms are governed by and construed in accordance with the laws of our jurisdiction. By using our services, you agree to submit to
           the exclusive jurisdiction of our courts for any disputes arising from or related to these terms.
