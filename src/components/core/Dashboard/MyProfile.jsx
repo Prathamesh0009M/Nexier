@@ -145,21 +145,23 @@ const RecommendationCard = ({ recommendation }) => {
     };
 
     return (
-        <div className="bg-white rounded-lg p-4 shadow-md flex flex-col justify-between">
-            <div className="flex flex-col md:flex items-center mb-2">
+        <div className="bg-richblack-900 border border-richblack-700 rounded-md p-4 shadow-md flex flex-col justify-between">
+            <div className="flex flex-col items-center mb-4">
                 <img
                     src={recommendation.image}
                     alt={`${recommendation.firstName} ${recommendation.lastName}`}
-                    className="w-12 h-12 rounded-full border-2 border-gray-300"
+                    className="w-14 h-14 rounded-full border border-white"
                 />
-                <div className="flex flex-col items-start ml-2">
-                    <p className="font-semibold text-richblack-800">{recommendation.firstName} {recommendation.lastName}</p>
-                    <p className="text-sm text-gray-600">{recommendation.YearAndBranch?recommendation.YearAndBranch:recommendation.intrestedIn}</p>
+                <div className="flex flex-col items-center mt-2">
+                    <p className="font-semibold text-white">{recommendation.firstName} {recommendation.lastName}</p>
+                    <p className="text-sm text-richblack-300">
+                        {recommendation.YearAndBranch ? recommendation.YearAndBranch : recommendation.intrestedIn}
+                    </p>
                 </div>
             </div>
             <button
                 onClick={handleOnFollow}
-                className={`py-1 px-4 rounded-md mt-auto ${isFollowing ? 'bg-gray-400' : 'bg-blue-500 hover:bg-blue-600'} text-white`}
+                className={`py-1 px-4 rounded-full mt-auto border text-white ${isFollowing ? 'border-gray-500 text-gray-500' : 'border-white hover:bg-white hover:text-richblack-900'}`}
                 disabled={isFollowing} // Disable button if already following
             >
                 {isFollowing ? 'Following' : 'Follow'}
