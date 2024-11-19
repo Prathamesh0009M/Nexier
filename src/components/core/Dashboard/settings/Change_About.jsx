@@ -38,6 +38,8 @@ const Change_About = () => {
             gender: "",
             contactNumber: "",
             about: "",
+            intrestedIn:"",
+            collegeId:"",
         });
     }, [reset, isSubmitSuccessful]);
 
@@ -84,6 +86,25 @@ const Change_About = () => {
                     />
                 </div>
                 <div>
+                    <label htmlFor='intrestedIn' className="block mb-2 text-sm font-medium text-gray-300">Intrested In</label>
+                    <input
+                        type="text"
+                        id="intrestedIn"
+                        className="w-full p-2 rounded-md bg-gray-700 text-white"
+                        {...register("intrestedIn")}
+                    />
+                </div>
+                <div>
+                    <label htmlFor='collegeId' className="block mb-2 text-sm font-medium text-gray-300">PRN NO.</label>
+                    <input
+                        type="text"
+                        id="collegeId"
+                        className="w-full p-2 rounded-md bg-gray-700 text-white"
+                        {...register("collegeId")}
+                    />
+                </div>
+
+                <div>
                     <label htmlFor='gender' className="block mb-2 text-sm font-medium text-gray-300">Gender</label>
                     <select
                         id="gender"
@@ -96,6 +117,7 @@ const Change_About = () => {
                         <option value="other">Other</option>
                     </select>
                 </div>
+
                 <div>
                     <label htmlFor='about' className="block mb-2 text-sm font-medium text-gray-300">About</label>
                     <textarea
