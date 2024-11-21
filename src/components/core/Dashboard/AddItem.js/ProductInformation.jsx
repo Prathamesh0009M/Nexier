@@ -332,12 +332,12 @@ const ProductInformation = () => {
                 <input
                     id='rentalPrice'
                     placeholder='Enter Rental Price'
-                    {...register("rentalPrice", { required: true })}
+                    {...register("rentalPrice")}
                     className='w-full px-4 py-2 mt-2 border border-richblack-600 rounded-md bg-richblack-900 text-white focus:outline-none focus:border-yellow-500 transition-all duration-200 ease-in-out'
                 />
-                {errors.rentalPrice && (
+{/*                 {errors.rentalPrice && (
                     <span className="text-red-500 text-xs">Rental Price is required</span>
-                )}
+                )} */}
             </div>
 
             <div>
@@ -345,12 +345,12 @@ const ProductInformation = () => {
                 <input
                     id='rentalDuration'
                     placeholder='Enter Rental Duration'
-                    {...register("rentalDuration", { required: true })}
+                    {...register("rentalDuration")}
                     className='w-full px-4 py-2 mt-2 border border-richblack-600 rounded-md bg-richblack-900 text-white focus:outline-none focus:border-yellow-500 transition-all duration-200 ease-in-out'
                 />
-                {errors.rentalDuration && (
+{/*                 {errors.rentalDuration && (
                     <span className="text-red-500 text-xs">Rental Duration is required</span>
-                )}
+                )} */}
             </div>
         </>
     {/* )} */}
