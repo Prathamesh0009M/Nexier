@@ -46,7 +46,7 @@ const VerifyEmail = () => {
                             <OTPInput
                                 value={otp}
                                 onChange={setOtp}
-                                numInputs={6}
+                                numInputs={4}
                                 renderSeparator={<span className="text-white">-</span>}
                                 renderInput={(props) => (
                                     <input
