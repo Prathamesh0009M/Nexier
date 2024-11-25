@@ -27,7 +27,7 @@ const Login = () => {
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <div className="flex flex-col-reverse  md:flex-row w-full max-w-5xl p-8 bg-richblack-800 rounded-lg shadow-md ">
+        <div className="flex flex-col  md:flex-row w-full max-w-5xl p-8 bg-richblack-800 rounded-lg shadow-md ">
           <div className="w-full mt-6  md:w-1/2 mr-24">
             <h1 className="text-3xl font-bold text-center text-white mb-4">Welcome Back!</h1>
             <p className="text-sm text-gray-400 mb-6 text-center">
