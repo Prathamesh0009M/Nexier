@@ -74,6 +74,12 @@ module.exports = {
         'custom': '3px',
       },
       keyframes: {
+        'fluctuate': {
+          '0%, 100%': { color: '#FFD700' }, // Yellow color
+          '25%': { color: '#FF6347' },      // Tomato Red color
+          '50%': { color: '#32CD32' },      // Lime Green color
+          '75%': { color: '#8A2BE2' },      // Blue Violet color
+        },
         'zigzag-light': {
           '0%, 100%': { borderColor: 'transparent' },
           '25%': { borderColor: '#ff0000' },
@@ -82,6 +88,7 @@ module.exports = {
         },
       },
       animation: {
+        'fluctuate': 'fluctuate 3s ease-in-out infinite', // Fluctuate animation with more colors
         'zigzag-light': 'zigzag-light 1s linear infinite',
       },
     },
