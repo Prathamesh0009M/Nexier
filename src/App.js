@@ -104,7 +104,7 @@ function App() {
       </Routes>
 
 
-    //<StickyLabel /> {/* Include sticky label */}
+  
       <Footer />
     </div>
   );
