@@ -56,7 +56,7 @@ const About = () => {
       <section className='my-16 bg-gray-800 p-6 rounded-lg shadow-lg'>
         <h2 className='text-xl md:text-2xl font-bold mb-4'>Meet the Creator</h2>
         <p className='text-md md:text-lg'>
-          "I’m Prathamesh Vasant Jadhav, a 3rd-year IT student at Dr. Babasaheb Ambedkar Technological University, Lonere. Driven by a passion for technology, I created this platform to make campus life more efficient and help students connect and trade academic resources easily."
+      we from 3rd-year IT student at Dr. Babasaheb Ambedkar Technological University, Lonere. Driven by a passion for technology, we created this platform to make campus life more efficient and help students connect and trade academic resources easily."
         </p>
       </section>
 
