@@ -48,6 +48,7 @@ const ItemDetails = () => {
                 if (res?.data) {
                     dispatch(setItem(res.data));
                     setItemData(res.data);
+                    console.log("data of item is ",res.data);
                 }
             } catch (e) {
                 console.error("Error fetching item data: ", e);
