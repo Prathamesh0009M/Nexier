@@ -36,7 +36,7 @@ export function sendOtp(email, navigate) {
 
 
             if (!response.data.success) {
-                throw new Error(response.data.message);
+                throw new Error("Something Went Wrong, Try again !");
             }
 
             toast.success("Kindly Check Your Email");
@@ -96,7 +96,7 @@ export function login(email, password, navigate) {
 
 
             if (!response.data.success) {
-                throw new Error(response.data.message);
+                throw new Error("Invalid Email or Password");
             }
 
             toast.success("Login successfully");
