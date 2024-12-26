@@ -276,11 +276,11 @@ const Navbar = () => {
             '>
 
 
-                  <div className="flex items-center text-center text-white font-semibold text-sm md:text-base">
+{/*                   <div className="flex items-center text-center text-white font-semibold text-sm md:text-base">
   <div className="text-xl md:text-4xl font-bold animate-fluctuate">
     400+ <span className="text-sm text-richblack-5">Active Users</span>
   </div>
-</div>
+</div> */}
                 <div className='mb-1 flex items-center md:flex items-center border-2 border-black rounded-lg p-1'>
                     <input
                         className='w-[330px] items-center md:w-[400px] h-9 text-black pl-3 border-none rounded-l-lg '
