@@ -82,9 +82,9 @@ const Login = () => {
             </div>
           </div>
 
-          <div className=" md:flex md:w-1/2 justify-center items-center">
+{/*           <div className=" md:flex md:w-1/2 justify-center items-center">
             <img src={loginn} alt="Login" className="max-w-full h-auto rounded-md" />
-          </div>
+          </div> */}
         </div>
       )}
     </div>
