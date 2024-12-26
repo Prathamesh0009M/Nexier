@@ -21,7 +21,7 @@ const ItemDetails = () => {
     const { token } = useSelector((state) => state.auth);
     const { user } = useSelector((state) => state.profile);
     const { cart } = useSelector((state) => state.cart);
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false); // Ensure this state is defined
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -151,7 +151,7 @@ const ItemDetails = () => {
                         customClasses={'mt-2 flex item-center justify-center border-[2px] border-blue'}
                     />
 
-                      <button className='mt-4 sm:mt-4 px-4 sm:px-6 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition'
+                    <button className='mt-4 sm:mt-4 px-4 sm:px-6 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition'
                         onClick={() => token ? navigate(`/chat`) : navigate("/login")}
                     >
                         Chat with Seller
