@@ -11,6 +11,7 @@ import IconBtn from '../../common/IconBtn';
 import { addToCart } from "../../../slices/cartSlice";
 import { followFriend } from '../../../services/operations/profileApi';
 import { setUser } from '../../../slices/profileSlice';
+import { Dialog } from '@headlessui/react';
 
 const ItemDetails = () => {
     const { itemId, ownerId } = useParams();
@@ -20,6 +21,25 @@ const ItemDetails = () => {
     const { token } = useSelector((state) => state.auth);
     const { user } = useSelector((state) => state.profile);
     const { cart } = useSelector((state) => state.cart);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        contactNo: ''
+    });
+
+    const handleContactSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            // Add your API call here
+            // await contactSeller({ ...formData, itemId, sellerId: ownerId });
+            console.log("Form submitted:", formData);
+            setIsModalOpen(false);
+            setFormData({ name: '', email: '', contactNo: '' });
+        } catch (error) {
+            console.error("Error submitting form:", error);
+        }
+    };
 
     const handleAddToCart = () => {
         if (token) {
@@ -48,7 +68,6 @@ const ItemDetails = () => {
                 if (res?.data) {
                     dispatch(setItem(res.data));
                     setItemData(res.data);
-                    console.log("data of item is ",res.data);
                 }
             } catch (e) {
                 console.error("Error fetching item data: ", e);
@@ -110,7 +129,6 @@ const ItemDetails = () => {
                         </div>
                     </div>
 
-                    {/* Add to Cart Button */}
                     <button 
                         className='mt-4 sm:mt-4 px-4 sm:px-6 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition'
                         onClick={handleAddToCart}
@@ -125,8 +143,7 @@ const ItemDetails = () => {
                             <p className='text-gray-400 text-sm sm:text-base'>Contact: {itemData?.owner?.email || itemData?.owner?.additionaldetail?.contactNumber || 'N/A'}</p>
                         </div>
                     </div>
-                    <h4 className='text-xl mt-4 ml-10'>Follow First To Chat
-                    </h4>
+                    <h4 className='text-xl mt-4 ml-10'>Follow First To Chat</h4>
                     <IconBtn
                         text={check ? 'Following..' : 'Follow Me'}
                         onclick={followingProb}
@@ -134,15 +151,88 @@ const ItemDetails = () => {
                         customClasses={'mt-2 flex item-center justify-center border-[2px] border-blue'}
                     />
 
-                    <button className='mt-4 sm:mt-4 px-4 sm:px-6 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition'
-                        onClick={() => token ? navigate(`/chat`) : navigate("/login")}
+                    <button 
+                        className='mt-4 sm:mt-4 px-4 sm:px-6 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition'
+                        onClick={() => token ? setIsModalOpen(true) : navigate("/login")}
                     >
-                        Chat with Seller
+                        Contact with Seller
                     </button>
-
-                    
                 </div>
             </div>
+
+            {/* Contact Form Modal */}
+            <Dialog 
+                open={isModalOpen} 
+                onClose={() => setIsModalOpen(false)}
+                className="relative z-50"
+            >
+                <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
+                
+                <div className="fixed inset-0 flex items-center justify-center p-4">
+                    <Dialog.Panel className="mx-auto max-w-sm rounded bg-white p-6 w-full">
+                        <Dialog.Title className="text-lg font-medium text-gray-900 mb-4">
+                            Contact Seller
+                        </Dialog.Title>
+
+                        <form onSubmit={handleContactSubmit} className="space-y-4">
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">
+                                    Name
+                                </label>
+                                <input
+                                    type="text"
+                                    required
+                                    value={formData.name}
+                                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                />
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">
+                                    Email
+                                </label>
+                                <input
+                                    type="email"
+                                    required
+                                    value={formData.email}
+                                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                />
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">
+                                    Contact Number
+                                </label>
+                                <input
+                                    type="tel"
+                                    required
+                                    value={formData.contactNo}
+                                    onChange={(e) => setFormData({...formData, contactNo: e.target.value})}
+                                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                />
+                            </div>
+
+                            <div className="mt-4 flex justify-end gap-2">
+                                <button
+                                    type="button"
+                                    onClick={() => setIsModalOpen(false)}
+                                    className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200"
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    type="submit"
+                                    className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700"
+                                >
+                                    Submit
+                                </button>
+                            </div>
+                        </form>
+                    </Dialog.Panel>
+                </div>
+            </Dialog>
 
             {/* Related Items Section */}
             <RelatedItemOfUser itemData={itemData} />
