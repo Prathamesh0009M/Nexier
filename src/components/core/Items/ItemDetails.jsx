@@ -151,9 +151,15 @@ const ItemDetails = () => {
                         customClasses={'mt-2 flex item-center justify-center border-[2px] border-blue'}
                     />
 
+                      <button className='mt-4 sm:mt-4 px-4 sm:px-6 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition'
+                        onClick={() => token ? navigate(`/chat`) : navigate("/login")}
+                    >
+                        Chat with Seller
+                    </button>
+
                     <button 
                         className='mt-4 sm:mt-4 px-4 sm:px-6 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition'
-                        onClick={() => token ? setIsModalOpen(true) : navigate("/login")}
+                        onClick={() => setIsModalOpen(true)}
                     >
                         Contact with Seller
                     </button>
