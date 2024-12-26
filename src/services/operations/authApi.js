@@ -96,7 +96,7 @@ export function login(email, password, navigate) {
 
 
             if (!response.data.success) {
-                throw new Error("Invalid Email or Password");
+                throw new Error("Network Error");
             }
 
             toast.success("Login successfully");
@@ -119,7 +119,7 @@ export function login(email, password, navigate) {
 
         } catch (e) {
             console.log("login error............!", e);
-            toast.error("Login failed Try Again");
+            toast.error("Invalid Email or Password");
         }
         // dispatch(setloading(false));
         toast.dismiss(toastId);
