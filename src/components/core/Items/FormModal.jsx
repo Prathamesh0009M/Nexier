@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 const FormModal = ({ isOpen, onClose, onSubmit }) => {
     const [formData, setFormData] = useState({
         name: '',
@@ -21,9 +20,9 @@ const FormModal = ({ isOpen, onClose, onSubmit }) => {
     if (!isOpen) return null;
 
     return (
-        <div className=" text-richblack-900 fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-            <div className="bg-white rounded-lg w-1/3 p-6 shadow-lg">
-                <h2 className="text-xl font-semibold mb-4">Contact with Seller</h2>
+        <div className="text-richblack-900 fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+            <div className="bg-white rounded-lg w-11/12 sm:w-1/3 p-6 shadow-lg transition-transform transform duration-300 scale-100 hover:scale-105">
+                <h2 className="text-xl font-semibold mb-4 text-center">Contact with Seller</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
                         <label className="block text-sm font-medium mb-1" htmlFor="name">
@@ -70,13 +69,13 @@ const FormModal = ({ isOpen, onClose, onSubmit }) => {
                         <button
                             type="button"
                             onClick={onClose}
-                            className="px-4 py-2 bg-gray-200 rounded-md mr-2 hover:bg-gray-300"
+                            className="px-4 py-2 bg-gray-200 rounded-md mr-2 hover:bg-gray-300 transition"
                         >
                             Cancel
                         </button>
                         <button
                             type="submit"
-                            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
                         >
                             Submit
                         </button>
