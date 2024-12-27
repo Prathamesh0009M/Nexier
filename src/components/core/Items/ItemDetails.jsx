@@ -94,7 +94,7 @@ const ItemDetails = () => {
             <div className='flex flex-col md:flex-row gap-6 w-full'>
                 {/* Item Image and Details */}
                 <div className='w-full md:w-1/2'>
-                    <img src={itemData?.thumbnail} alt="Item Thumbnail" className='w-full h-64 sm:h-80 object-cover rounded-lg shadow-md' />
+                    <img src={itemData?.thumbnail} alt="Item Thumbnail" className='w-full h-64 sm:h-80 object-cover rounded-lg shadow-md transition-transform duration-300 hover:scale-105' />
                 </div>
 
                 <div className='w-full md:w-1/2 flex flex-col justify-between'>
@@ -137,7 +137,7 @@ const ItemDetails = () => {
 
                     {/* Add to Cart Button */}
                     <button 
-                        className='mt-4 sm:mt-4 px-4 sm:px-6 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition'
+                        className='mt-4 sm:mt-4 px-4 sm:px-6 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition transform duration-300 hover:scale-105'
                         onClick={handleAddToCart}
                     >
                         Add to Cart
@@ -150,8 +150,7 @@ const ItemDetails = () => {
                             <p className='text-gray-400 text-sm sm:text-base'>Contact: {itemData?.owner?.email || itemData?.owner?.additionaldetail?.contactNumber || 'N/A'}</p>
                         </div>
                     </div>
-                    <h4 className='text-xl mt-4 ml-10'>Follow First To Chat
-                    </h4>
+                    <h4 className='text-xl mt-4 ml-10'>Follow First To Chat</h4>
                     <IconBtn
                         text={check ? 'Following..' : 'Follow Me'}
                         onclick={followingProb}
@@ -159,27 +158,24 @@ const ItemDetails = () => {
                         customClasses={'mt-2 flex item-center justify-center border-[2px] border-blue'}
                     />
 
-                    <button className='mt-4 sm:mt-4 px-4 sm:px-6 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition'
+                    <button className='mt-4 sm:mt-4 px-4 sm:px-6 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition transform duration-300 hover:scale-105'
                         onClick={() => token ? navigate(`/chat`) : navigate("/login")}
                     >
                         Chat with Seller
                     </button>
 
-                       <button
+                    <button
                         onClick={handleOpenModal}
-                        className="mt-7 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
+                        className="mt-7 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition transform duration-300 hover:scale-105"
                     >
                         Contact with Seller
                     </button>
-               
 
                     <FormModal
                         isOpen={isModalOpen}
                         onClose={handleCloseModal}
                         onSubmit={handleSubmitForm}
                     />
-
-                    
                 </div>
             </div>
 
