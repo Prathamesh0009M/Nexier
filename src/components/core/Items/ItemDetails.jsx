@@ -89,7 +89,7 @@ const ItemDetails = () => {
         fetchData();
     }, [itemId, dispatch]);
 
-    return (
+  return (
         <div className='mt-4 relative mx-auto flex flex-col w-full max-w-6xl items-center p-4 sm:p-6 bg-gray-800 text-white rounded-lg shadow-lg'>
             <div className='flex flex-col md:flex-row gap-6 w-full'>
                 {/* Item Image and Details */}
@@ -135,13 +135,22 @@ const ItemDetails = () => {
                         </div>
                     </div>
 
-                    {/* Add to Cart Button */}
-                    <button 
-                        className='mt-4 sm:mt-4 px-4 sm:px-6 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition transform duration-300 hover:scale-105'
-                        onClick={handleAddToCart}
-                    >
-                        Add to Cart
-                    </button>
+                    {/* Add to Cart and Follow Me Buttons in One Row */}
+                    <div className='flex justify-between items-center mt-4'>
+                        <button 
+                            className='px-4 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition transform duration-300 hover:scale-105'
+                            onClick={handleAddToCart}
+                        >
+                            Add to Cart
+                        </button>
+
+                        <IconBtn
+                            text={check ? 'Following..' : 'Follow Me'}
+                            onclick={followingProb}
+                            disabled={check}
+                            customClasses={'ml-4 px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition transform duration-300 hover:scale-105'}
+                        />
+                    </div>
 
                     <div className='flex items-center gap-4 mt-4 sm:mt-6'>
                         <img src={itemData?.owner?.image} className='w-12 sm:w-16 h-12 sm:h-16 rounded-full object-cover border-2 border-gray-600' alt="Owner" />
@@ -151,12 +160,6 @@ const ItemDetails = () => {
                         </div>
                     </div>
                     <h4 className='text-xl mt-4 ml-10'>Follow First To Chat</h4>
-                    <IconBtn
-                        text={check ? 'Following..' : 'Follow Me'}
-                        onclick={followingProb}
-                        disabled={check}
-                        customClasses={'mt-2 flex item-center justify-center border-[2px] border-blue'}
-                    />
 
                     <button className='mt-4 sm:mt-4 px-4 sm:px-6 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition transform duration-300 hover:scale-105'
                         onClick={() => token ? navigate(`/chat`) : navigate("/login")}
