@@ -11,6 +11,29 @@ import IconBtn from '../../common/IconBtn';
 import { addToCart } from "../../../slices/cartSlice";
 import { followFriend } from '../../../services/operations/profileApi';
 import { setUser } from '../../../slices/profileSlice';
+import FormModal from './FormModal';
+
+ const [isModalOpen, setModalOpen] = useState(false);
+
+    const handleOpenModal = () => setModalOpen(true);
+    const handleCloseModal = () => setModalOpen(false);
+    const handleSubmitForm = async (formData) => {
+        try {
+            
+
+            const finalData = { ...formData, sellerEmail };
+            
+            console.log("notification from the user is ", finalData);
+
+            const response = await contactSeller(finalData);
+            console.log(response);
+
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again later.');
+        }
+    };
+
 
 const ItemDetails = () => {
     const { itemId, ownerId } = useParams();
@@ -139,6 +162,19 @@ const ItemDetails = () => {
                     >
                         Chat with Seller
                     </button>
+
+                      <button
+                        onClick={handleOpenModal}
+                        className="mt-4 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
+                    >
+                        Contact with Seller
+                    </button>
+
+                    <FormModal
+                        isOpen={isModalOpen}
+                        onClose={handleCloseModal}
+                        onSubmit={handleSubmitForm}
+                    />
 
                     
                 </div>
