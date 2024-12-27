@@ -13,26 +13,6 @@ import { followFriend } from '../../../services/operations/profileApi';
 import { setUser } from '../../../slices/profileSlice';
 import FormModal from './FormModal';
 
- const [isModalOpen, setModalOpen] = useState(false);
-
-    const handleOpenModal = () => setModalOpen(true);
-    const handleCloseModal = () => setModalOpen(false);
-    const handleSubmitForm = async (formData) => {
-        try {
-            
-            const sellerEmail = itemData?.owner?.email;
-            const finalData = { ...formData, sellerEmail };
-            
-            console.log("notification from the user is ", finalData);
-
-            const response = await contactSeller(finalData);
-            console.log(response);
-
-        } catch (error) {
-            console.error('Error:', error);
-            alert('An error occurred. Please try again later.');
-        }
-    };
 
 
 const ItemDetails = () => {
@@ -63,6 +43,28 @@ const ItemDetails = () => {
     };
 
     let check = itemData && itemData.owner && itemData.owner.follower?.includes(user?._id);
+
+  const [isModalOpen, setModalOpen] = useState(false);
+
+    const handleOpenModal = () => setModalOpen(true);
+    const handleCloseModal = () => setModalOpen(false);
+    const handleSubmitForm = async (formData) => {
+        try {
+            
+            const sellerEmail = itemData?.owner?.email;
+            const finalData = { ...formData, sellerEmail };
+            
+            console.log("notification from the user is ", finalData);
+
+            const response = await contactSeller(finalData);
+            console.log(response);
+
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again later.');
+        }
+    };
+
 
     useEffect(() => {
         const fetchData = async () => {
