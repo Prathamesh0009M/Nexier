@@ -35,7 +35,7 @@ export const    sidebarLinks = [
     {
         id: 5,
         name: "Bought Item",
-        path: "/dashboard/purchase-activity"",
+        path: "/dashboard/purchase-activity",
         // type: ACCOUNT_TYPE.STUDENT,
         // type: "Student"&&"Admin",
         icon: "VscMortarBoard",
