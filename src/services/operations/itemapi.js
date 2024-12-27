@@ -10,8 +10,37 @@ const { GET_ALL_ITEMS_API,
     EDIT_ITEM_API,
     DELETE_PRODUCT_API,
     STATUS_CHANGE_API,
+       CONTACT_SELLER_API
   
 } = itemApi;
+
+
+export const contactSeller = async (data) => {
+
+    let result = null;
+    const toastId = toast.loading("Loading...");
+    try {
+        const response = await apiConnector("POST", CONTACT_SELLER_API, data, {
+            "Content-Type": "multipart/form-data",
+        });
+        
+
+        // console.log("i AM HERE ")
+
+        if (!response?.data?.success) {
+            throw new Error("Could not make product");
+        }
+
+        toast.success("Mail Sent SuccessFully");
+        result = response;
+    } catch (error) {
+        console.error("product create successfully ERROR", error);
+        toast.error(error.message);
+    }
+
+    toast.dismiss(toastId);
+    return result;
+}
 
 
 export const fetchAllItems = async () => {
