@@ -163,9 +163,9 @@ const ItemDetails = () => {
                         Chat with Seller
                     </button>
 
-                      <button
+                       <button
                         onClick={handleOpenModal}
-                        className=" px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
+                        className="mt-7 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
                     >
                         Contact with Seller
                     </button>
