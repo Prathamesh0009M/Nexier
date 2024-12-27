@@ -12,6 +12,8 @@ export const itemApi = {
     ADD_VIEWS: BASE_URL + "/item/views",
     GET_MESSAGE_DATA: BASE_URL + "/profile/messageHistory",
     GET_OWNER_PRODUCTS:BASE_URL+"/item/ownersAllProduct",
+        CONTACT_SELLER_API:BASE_URL+"/item/contactSeller",
+
     
 }
 export const categoryApi = {
