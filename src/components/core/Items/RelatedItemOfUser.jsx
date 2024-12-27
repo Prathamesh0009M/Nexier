@@ -2,22 +2,16 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaRupeeSign } from 'react-icons/fa';
 import Heart from 'react-heart';
-
 const RelatedItemOfUser = ({ itemData }) => {
     const [active, setActive] = useState(false);
     const navigate = useNavigate();
 
-
     const handleOnClick = (itemId, ownerId) => {
-        // Navigate to the item details page
         navigate(`/item/${itemId}/owner/${ownerId}`);
     };
 
-    // Extract itemsToSell from itemData
     const itemsToSell = itemData?.owner?.itemsToSell || [];
 
-
-    // RelatedItemOfUser component
     return (
         <div className='mt-12'>
             <p className='text-xl'>Other Related Products</p>
@@ -77,7 +71,6 @@ const RelatedItemOfUser = ({ itemData }) => {
             )}
         </div>
     );
-
 };
 
 export default RelatedItemOfUser;
