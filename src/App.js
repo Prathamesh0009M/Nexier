@@ -34,7 +34,8 @@ import AddPyq from "./components/core/Dashboard/academics/AddPyq.jsx";
 import ShowPaper from "./components/core/Dashboard/academics/ShowPaper.jsx";
 import Create_Category from "./components/core/Dashboard/Admin/Create_Category.jsx";
 import TermsAndConditions from "./components/common/TermsAndConditions.jsx";
-
+import PurchaseHistory from "./components/core/Dashboard/PurchaseHistory.jsx";
+import BoughItem from "./components/core/Dashboard/BoughItem.jsx";
 
 function App() {
   const { user } = useSelector((state) => state.profile);
@@ -99,6 +100,9 @@ function App() {
           <Route path="my-items" element={<MyItemList />} />
           <Route path="edit-item/:itemId" element={<EditItem />} />
           <Route path="settings" element={<Indexer />} />
+
+            <Route path="purchase-history" element={<PurchaseHistory />} />
+          <Route path="purchase-activity" element={<BoughItem />} />
         </Route>
         
       </Routes>
