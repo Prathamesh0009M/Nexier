@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { fetchItemData, view } from "../../../services/operations/itemapi";
+import {contactSeller,  fetchItemData, view } from "../../../services/operations/itemapi";
 import { setItem } from '../../../slices/itemSlice';
 import { FaRupeeSign } from "react-icons/fa";
 import RelatedItemOfUser from "./RelatedItemOfUser";
@@ -20,7 +20,7 @@ import FormModal from './FormModal';
     const handleSubmitForm = async (formData) => {
         try {
             
-
+            const sellerEmail = itemData?.owner?.email;
             const finalData = { ...formData, sellerEmail };
             
             console.log("notification from the user is ", finalData);
