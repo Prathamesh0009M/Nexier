@@ -78,6 +78,12 @@ const VerifyEmail = () => {
                             Resend it
                         </button>
                     </div>
+
+                    <p className="mt-4 text-sm text-richblack-5 text-center">
+    <span className="text-yellow-300 font-semibold">Can't find your OTP?</span> 
+    Check your <span className="text-blue-500">Spam folder</span> or look in <span className="text-blue-500">All Inboxes</span>.
+</p>
+
                 </div>
             )}
         </div>
