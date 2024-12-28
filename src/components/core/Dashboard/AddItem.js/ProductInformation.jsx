@@ -190,7 +190,7 @@ const ProductInformation = () => {
 
     {/* Short Description Input */}
     <div>
-        <label htmlFor="itemShortDesc" className="text-sm font-semibold">Product Short Description<sup className='text-red-600'>*</sup></label>
+        <label htmlFor="itemShortDesc" className="text-sm font-semibold">Product Short Description (Add Contact number for fast Process) <sup className='text-red-600'>*</sup></label>
         <textarea
             id='itemShortDesc'
             placeholder='Enter Product Description'
