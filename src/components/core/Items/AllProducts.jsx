@@ -38,6 +38,9 @@ const AllProducts = () => {
                         className="relative bg-gray-800 text-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl hover:border-b-4 hover:border-r-4 hover:border-gray-600"
                         onClick={() => handleOnClick(item._id, item.owner)}
                     >
+                          <div className="absolute top-2 right-2 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded-md shadow-md">
+                            Click Me
+                        </div>
                         <img src={item.thumbnail} alt={item.title} className="w-full h-48 object-cover" />
                      
                         <div className="p-6 bg-richblack-700 border-t-2 border-gray-600">
@@ -59,7 +62,7 @@ const AllProducts = () => {
                             </div>
                             {item.rentalAvailable === 'Available' && (
                                 <div className="mt-2 p-2 bg-yellow-600 text-yellow-100 text-sm rounded-lg">
-                                    Rental Available: {item.rentalDuration} at ${item.rentalPrice} per {item.rentalDuration}
+                                    Rental Available: {item.rentalDuration} at ₨ {item.rentalPrice} per {item.rentalDuration}
                                 </div>
                             )}
                         </div>
