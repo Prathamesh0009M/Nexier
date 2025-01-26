@@ -4,7 +4,6 @@ import { login } from '../services/operations/authApi';
 import { IoEye, IoEyeOffOutline } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
 import IconBtn from '../components/common/IconBtn';
-import loginn from "../asset/Images/loginn.jpg";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -27,8 +26,8 @@ const Login = () => {
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <div className="flex flex-col  md:flex-row w-full max-w-5xl p-8 bg-richblack-800 rounded-lg shadow-md ">
-          <div className="w-full mt-6  md:w-1/2 mr-24">
+        <div className="flex flex-col w-full max-w-5xl p-8 bg-richblack-800 rounded-lg shadow-md ">
+          <div className="w-full mt-6 md:w-1/2 mr-24">
             <h1 className="text-3xl font-bold text-center text-white mb-4">Welcome Back!</h1>
             <p className="text-sm text-gray-400 mb-6 text-center">
               Discover the easiest way to buy and sell Used items within your campus!
@@ -81,10 +80,6 @@ const Login = () => {
               </span>
             </div>
           </div>
-
-{/*           <div className=" md:flex md:w-1/2 justify-center items-center">
-            <img src={loginn} alt="Login" className="max-w-full h-auto rounded-md" />
-          </div> */}
         </div>
       )}
     </div>
