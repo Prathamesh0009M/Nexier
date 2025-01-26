@@ -22,7 +22,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-richblack-900 px-2 sm:px-4 py-8">
+    <div className="flex mt-3 justify-center min-h-screen bg-richblack-900 px-2 sm:px-4 py-8">
       {loading ? (
         <div className="text-white">Loading...</div>
       ) : (
