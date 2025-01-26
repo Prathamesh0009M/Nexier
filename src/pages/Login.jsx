@@ -22,14 +22,7 @@ const Login = () => {
   };
 
   return (
- import React, { useState } from "react";
-import { IoEye, IoEyeOffOutline } from "react-icons/io5";
-import IconBtn from "./IconBtn"; // Assuming IconBtn is a separate component
 
-const Login = ({ loading, formData, handleOnChange, handleOnSubmit, navigate }) => {
-  const [showPassword, setShowPassword] = useState(false);
-
-  return (
     <div className="flex items-center justify-center min-h-screen bg-richblack-900 px-4">
       {loading ? (
         <div className="text-white text-lg">Loading...</div>
