@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../services/operations/authApi';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../services/operations/authApi";
 import { IoEye, IoEyeOffOutline } from "react-icons/io5";
-import { useNavigate } from 'react-router-dom';
-import IconBtn from '../components/common/IconBtn';
-import loginn from "../asset/Images/loginn.jpg";
+import { useNavigate } from "react-router-dom";
+import IconBtn from "../components/common/IconBtn";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -23,19 +22,24 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-richblack-900 px-4 py-12">
+    <div className="flex items-center justify-center min-h-screen bg-richblack-900 px-2 sm:px-4 py-8">
       {loading ? (
         <div className="text-white">Loading...</div>
       ) : (
-        <div className="flex flex-col md:flex-row w-full max-w-5xl bg-richblack-800 rounded-lg shadow-lg">
-          <div className="w-full p-6 md:w-1/2 md:pr-12">
-            <h1 className="text-3xl font-bold text-center text-white mb-6">Welcome Back!</h1>
-            <p className="text-sm text-gray-400 text-center mb-8">
-              Discover the easiest way to buy and sell Used items within your campus!
+        <div className="flex flex-col w-full max-w-xl bg-richblack-800 rounded-lg shadow-lg">
+          <div className="w-full p-6">
+            <h1 className="text-2xl font-bold text-center text-white mb-4">
+              Welcome Back!
+            </h1>
+            <p className="text-sm text-gray-400 text-center mb-6">
+              Discover the easiest way to buy and sell Used items within your
+              campus!
             </p>
-            <form onSubmit={handleOnSubmit} className="space-y-6">
+            <form onSubmit={handleOnSubmit} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-300">Email Address</label>
+                <label className="block text-sm font-medium text-gray-300">
+                  Email Address
+                </label>
                 <input
                   required
                   type="email"
@@ -47,7 +51,9 @@ const Login = () => {
                 />
               </div>
               <div className="relative">
-                <label className="block text-sm font-medium text-gray-300">Password</label>
+                <label className="block text-sm font-medium text-gray-300">
+                  Password
+                </label>
                 <input
                   required
                   type={showPassword ? "text" : "password"}
@@ -64,16 +70,20 @@ const Login = () => {
                   {showPassword ? <IoEye fontSize={24} /> : <IoEyeOffOutline fontSize={24} />}
                 </span>
               </div>
-              <IconBtn text="Sign In" type="submit" customClasses="w-full flex justify-center items-center" />
+              <IconBtn
+                text="Sign In"
+                type="submit"
+                customClasses="w-full flex justify-center items-center"
+              />
             </form>
             <div
-              className="mt-4 text-center text-gray-300 cursor-pointer hover:text-gray-200"
+              className="mt-3 text-center text-gray-300 cursor-pointer hover:text-gray-200"
               onClick={() => navigate("/forgot-password")}
             >
               Forgot Password?
             </div>
-            <div className="text-sm text-gray-400 text-center mt-4">
-              Don't have an account?{' '}
+            <div className="text-sm text-gray-400 text-center mt-3">
+              Don't have an account?{" "}
               <span
                 onClick={() => navigate("/signup")}
                 className="text-blue-400 cursor-pointer hover:text-blue-300 transition-all duration-300"
@@ -81,10 +91,6 @@ const Login = () => {
                 Sign up here.
               </span>
             </div>
-          </div>
-
-          <div className="hidden md:flex md:w-1/2 items-center justify-center bg-cover bg-center rounded-r-lg" style={{ backgroundImage: `url(${loginn})` }}>
-            {/* Image Section for larger screens */}
           </div>
         </div>
       )}
