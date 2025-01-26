@@ -47,6 +47,7 @@ export function sendOtp(email, navigate) {
               if (e.response.data.message == "User already registered ") {
 
                 toast.error("User already Exists");
+                  navigate("/login");
             }
         }
         // dispatch(setloading(false));
