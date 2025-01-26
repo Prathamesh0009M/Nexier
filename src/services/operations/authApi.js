@@ -43,7 +43,11 @@ export function sendOtp(email, navigate) {
             navigate("/verify-email");
         } catch (e) {
             console.log("send otp error............!", e);
-            toast.error("Could not send OTP");
+            // toast.error("Could not send OTP");
+              if (e.response.data.message == "User already registered ") {
+
+                toast.error("User already Exists");
+            }
         }
         // dispatch(setloading(false));
         toast.dismiss(toastId);
