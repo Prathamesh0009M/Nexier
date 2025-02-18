@@ -61,7 +61,7 @@ const About = () => {
       </section> */}
 
       {/* Section 3: Founding Story */}
-      <section className='mb-16'>
+      <section className='mt-6 mb-16'>
         <div className='flex flex-col lg:flex-row items-center gap-10'>
 
           {/* Founding Story Text */}
