@@ -26,7 +26,7 @@ import About from "./pages/About.jsx";
 import Indexer from "./components/core/Dashboard/settings/Indexer.jsx";
 import FollowList from "./components/core/Dashboard/followHandler/FollowList.jsx"
 import ProfileViewer from "./components/core/Dashboard/followHandler/ProfileViewer.jsx";
-import StickyLabel from "./components/common/StickyLabel.jsx";
+// import StickyLabel from "./components/common/StickyLabel.jsx";
 import Contact from "./pages/Contact.jsx";
 import Footer from "./components/common/Footer.jsx"
 import { useSelector } from "react-redux";
@@ -108,7 +108,7 @@ function App() {
       </Routes>
 
 
-        // <StickyLabel />
+        
       <Footer />
     </div>
   );
