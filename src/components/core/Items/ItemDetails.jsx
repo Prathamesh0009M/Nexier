@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import {contactSeller,  fetchItemData, view } from "../../../services/operations/itemapi";
+import { contactSeller, fetchItemData, view } from "../../../services/operations/itemapi";
 import { setItem } from '../../../slices/itemSlice';
 import { FaRupeeSign } from "react-icons/fa";
 import RelatedItemOfUser from "./RelatedItemOfUser";
@@ -12,10 +12,31 @@ import { addToCart } from "../../../slices/cartSlice";
 import { followFriend } from '../../../services/operations/profileApi';
 import { setUser } from '../../../slices/profileSlice';
 import FormModal from './FormModal';
-
-
-
 const ItemDetails = () => {
+
+
+    const [isModalOpen, setModalOpen] = useState(false);
+
+    const handleOpenModal = () => setModalOpen(true);
+    const handleCloseModal = () => setModalOpen(false);
+    const handleSubmitForm = async (formData) => {
+        try {
+            
+
+            const finalData = { ...formData, sellerEmail };
+            
+            console.log("notification from the user is ", finalData);
+
+            const response = await contactSeller(finalData);
+            console.log(response);
+
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again later.');
+        }
+    };
+
+
     const { itemId, ownerId } = useParams();
     const dispatch = useDispatch();
     const [itemData, setItemData] = useState(null);
@@ -43,28 +64,7 @@ const ItemDetails = () => {
     };
 
     let check = itemData && itemData.owner && itemData.owner.follower?.includes(user?._id);
-
-  const [isModalOpen, setModalOpen] = useState(false);
-
-    const handleOpenModal = () => setModalOpen(true);
-    const handleCloseModal = () => setModalOpen(false);
-    const handleSubmitForm = async (formData) => {
-        try {
-            
-            const sellerEmail = itemData?.owner?.email;
-            const finalData = { ...formData, sellerEmail };
-            
-            console.log("notification from the user is ", finalData);
-
-            const response = await contactSeller(finalData);
-            console.log(response);
-
-        } catch (error) {
-            console.error('Error:', error);
-            alert('An error occurred. Please try again later.');
-        }
-    };
-
+    const sellerEmail = itemData?.owner?.email;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -73,7 +73,8 @@ const ItemDetails = () => {
                 if (res?.data) {
                     dispatch(setItem(res.data));
                     setItemData(res.data);
-                    console.log("data of item is ",res.data);
+                    console.log("datya is ", res.data);
+
                 }
             } catch (e) {
                 console.error("Error fetching item data: ", e);
@@ -89,103 +90,153 @@ const ItemDetails = () => {
         fetchData();
     }, [itemId, dispatch]);
 
-  return (
-        <div className='mt-4 relative mx-auto flex flex-col w-full max-w-6xl items-center p-4 sm:p-6 bg-gray-800 text-white rounded-lg shadow-lg'>
-            <div className='flex flex-col md:flex-row gap-6 w-full'>
-                {/* Item Image and Details */}
-                <div className='w-full md:w-1/2'>
-                    <img src={itemData?.thumbnail} alt="Item Thumbnail" className='w-full h-64 sm:h-80 object-cover rounded-lg shadow-md transition-transform duration-300 hover:scale-105' />
+    return (
+        <div className='min-h-screen bg-gradient-to-b from-gray-900 via-purple-900/20 to-gray-900 py-8'>
+            <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+                <div className='bg-gray-800/90 backdrop-blur-sm rounded-2xl shadow-2xl p-6 lg:p-8'>
+                    <div className='flex flex-col lg:flex-row gap-8'>
+                        {/* Image Section with Enhanced Animation */}
+                        <div className='lg:w-1/2'>
+                            <div className='relative group overflow-hidden rounded-xl'>
+                                <div className='absolute inset-0 bg-gradient-to-r from-purple-500/50 to-pink-500/50 blur-md opacity-0 group-hover:opacity-75 transition-all duration-500'></div>
+                                <img 
+                                    src={itemData?.thumbnail} 
+                                    alt={itemData?.title}
+                                    className='w-full h-[400px] object-cover rounded-xl shadow-lg transform transition-all duration-700 group-hover:scale-110'
+                                />
+                                <div className='absolute top-4 right-4 bg-pink-500/20 p-2 rounded-full backdrop-blur-sm'>
+                                    <AiOutlineHeart className='text-2xl text-pink-400 animate-pulse' />
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Details Section with Enhanced Styling */}
+                        <div className='lg:w-1/2 flex flex-col gap-6'>
+                            <div className='space-y-4'>
+                                {/* Updated Product Title */}
+                                <h1 className='text-4xl md:text-5xl font-bold text-white 
+                                                 hover:scale-[1.02] transform transition-all duration-300'>
+                                    {itemData?.title}
+                                </h1>
+
+                                {/* Updated Price, Views, and Date Section */}
+                                <div className='flex flex-col sm:flex-row items-start sm:items-center gap-4 
+                                                  bg-gradient-to-r from-gray-800/50 to-gray-700/50 p-6 rounded-xl 
+                                                  border border-purple-500/30'>
+                                    <div className='flex-1 space-y-3'>
+                                        <div className='text-5xl font-bold flex items-center text-white
+                                                      hover:scale-105 transform transition-all duration-300'>
+                                            <FaRupeeSign className="mr-1" />
+                                            <span>{itemData?.price}</span>
+                                        </div>
+                                        <div className='flex items-center gap-3 text-gray-300'>
+                                            <div className='flex items-center gap-2 bg-purple-500/10 px-4 py-2 
+                                                          rounded-full border border-purple-500/30'>
+                                                <span className='animate-pulse text-2xl'>👁</span>
+                                                <span className='text-lg font-semibold'>{itemData?.views || 0} </span>
+                                            </div>
+                                            <div className='flex items-center gap-2 bg-blue-500/10 px-4 py-2 
+                                                          rounded-full border border-blue-500/30'>
+                                                <MdDateRange className="text-blue-400 text-xl" />
+                                                <span>{new Date(itemData?.createdAt).toLocaleDateString('en-US', {
+                                                    day: 'numeric',
+                                                    month: 'short',
+                                                    year: 'numeric'
+                                                })}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className='bg-gray-700/30 rounded-xl p-4'>
+                                    <h3 className='text-xl font-semibold text-blue-300 mb-2'>About This Item</h3>
+                                    <p className='text-gray-300 leading-relaxed'>{itemData?.description}</p>
+                                </div>
+
+                                {/* Important Notice */}
+                                <div className='bg-yellow-500/10 p-4 rounded-xl border border-yellow-500/30'>
+                                    <h4 className='text-yellow-400 text-lg font-semibold mb-2'>⚠️ Important Notice</h4>
+                                    <p className='text-yellow-300'>Follow the seller first to enable chat functionality!</p>
+                                </div>
+
+                                {/* Seller Info with Enhanced Design */}
+                                <div className='bg-purple-500/10 p-4 rounded-xl border border-purple-500/30'>
+                                    <div className='flex items-center gap-4'>
+                                        <div className='relative group'>
+                                            <div className='absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur group-hover:blur-md transition-all duration-300'></div>
+                                            <img 
+                                                src={itemData?.owner?.image} 
+                                                className='relative w-16 h-16 rounded-full object-cover border-2 border-purple-500 transform transition-transform duration-300 group-hover:scale-105' 
+                                                alt="Owner" 
+                                            />
+                                        </div>
+                                        <div>
+                                            <p className='text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent'>
+                                                {itemData?.owner?.firstName} {itemData?.owner?.lastName}
+                                            </p>
+                                            <p className='text-gray-400'>
+                                                {itemData?.owner?.email || itemData?.owner?.additionaldetail?.contactNumber || 'N/A'}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Action Buttons with Enhanced Styling */}
+                                <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
+                                    <button
+                                        onClick={handleAddToCart}
+                                        className='group relative px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl 
+                                                 overflow-hidden transition-all duration-300'
+                                    >
+                                        <div className='absolute inset-0 bg-white/20 transform -skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-500'></div>
+                                        <span className='relative text-white font-semibold'>Add to Cart</span>
+                                    </button>
+
+                                    <IconBtn
+                                        text={check ? 'Following' : 'Follow Me'}
+                                        onclick={followingProb}
+                                        disabled={check}
+                                        customClasses='group relative px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl 
+                                                       overflow-hidden transition-all duration-300 disabled:opacity-50'
+                                    />
+
+                                    <button
+                                        onClick={() => token ? navigate(`/chat`) : navigate("/login")}
+                                        className='group relative px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl 
+                                                 overflow-hidden transition-all duration-300'
+                                    >
+                                        <div className='absolute inset-0 bg-white/20 transform -skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-500'></div>
+                                        <span className='relative text-white font-semibold'>Chat with Seller</span>
+                                    </button>
+
+                                    <button
+                                        onClick={handleOpenModal}
+                                        className='group relative px-6 py-3 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl 
+                                                 overflow-hidden transition-all duration-300'
+                                    >
+                                        <div className='absolute inset-0 bg-white/20 transform -skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-500'></div>
+                                        <span className='relative text-white font-semibold'>Contact Seller</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div className='w-full md:w-1/2 flex flex-col justify-between'>
-                    <div>
-                        <h1 className='text-2xl sm:text-3xl font-bold mb-4'>{itemData?.title}</h1>
-                        <div className='text-sm sm:text-lg mb-4'>
-                            <p className='text-gray-400'>Description:</p>
-                            <p className='text-gray-300'>{itemData?.description}</p>
-                        </div>
+                {/* Form Modal */}
+                <FormModal
+                    isOpen={isModalOpen}
+                    onClose={handleCloseModal}
+                    onSubmit={handleSubmitForm}
+                />
 
-                        {itemData?.rentalAvailable === "Available" ? (
-                            <div className='bg-yellow-500 p-2 sm:p-4 rounded-lg mb-4'>
-                                <p className='font-semibold'>Rent: Available</p>
-                                <p className='text-gray-200'>Price: {itemData?.rentalPrice}</p>
-                                <p className='text-gray-200'>Duration: {itemData?.rentalDuration}</p>
-                            </div>
-                        ) : (
-                            <div className='bg-red-500 p-2 sm:p-4 rounded-lg mb-4'>
-                                <p className='font-semibold'>No Rent Service Available for this Item.</p>
-                            </div>
-                        )}
-                    </div>
-
-                    <div className='flex flex-col gap-4'>
-                        <div className='flex items-center justify-between'>
-                            <p className='text-xl sm:text-2xl flex items-center gap-2'>
-                                <FaRupeeSign />
-                                {itemData?.price}
-                            </p>
-                            <div className='flex items-center gap-2'>
-                                <AiOutlineHeart className='text-red-500' />
-                                <span>{itemData?.views} Views</span>
-                            </div>
-                        </div>
-                        <div className='text-gray-400 flex items-center gap-2'>
-                            <MdDateRange />
-                            <p>{new Date(itemData?.createdAt).toLocaleDateString()}</p>
-                        </div>
-                    </div>
-
-                    {/* Add to Cart and Follow Me Buttons in One Row */}
-                    <div className='flex justify-between items-center mt-4'>
-                        <button 
-                            className='px-4 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition transform duration-300 hover:scale-105'
-                            onClick={handleAddToCart}
-                        >
-                            Add to Cart
-                        </button>
-
-                        <IconBtn
-                            text={check ? 'Following..' : 'Follow Me'}
-                            onclick={followingProb}
-                            disabled={check}
-                            customClasses={'ml-4 px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition transform duration-300 hover:scale-105'}
-                        />
-                    </div>
-
-                    <div className='flex items-center gap-4 mt-4 sm:mt-6'>
-                        <img src={itemData?.owner?.image} className='w-12 sm:w-16 h-12 sm:h-16 rounded-full object-cover border-2 border-gray-600' alt="Owner" />
-                        <div className='flex flex-col'>
-                            <p className='text-lg sm:text-xl font-semibold'>{itemData?.owner?.firstName} {itemData?.owner?.lastName}</p>
-                            <p className='text-gray-400 text-sm sm:text-base'>Contact: {itemData?.owner?.email || itemData?.owner?.additionaldetail?.contactNumber || 'N/A'}</p>
-                        </div>
-                    </div>
-                    <h4 className='text-xl mt-4 ml-10'>Follow First To Chat</h4>
-
-                    <button className='mt-4 sm:mt-4 px-4 sm:px-6 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition transform duration-300 hover:scale-105'
-                        onClick={() => token ? navigate(`/chat`) : navigate("/login")}
-                    >
-                        Chat with Seller
-                    </button>
-
-                    <button
-                        onClick={handleOpenModal}
-                        className="mt-7 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition transform duration-300 hover:scale-105"
-                    >
-                        Contact with Seller
-                    </button>
-
-                    <FormModal
-                        isOpen={isModalOpen}
-                        onClose={handleCloseModal}
-                        onSubmit={handleSubmitForm}
-                    />
+                {/* Related Items */}
+                <div className='mt-12'>
+                    <RelatedItemOfUser itemData={itemData} />
                 </div>
             </div>
-
-            {/* Related Items Section */}
-            <RelatedItemOfUser itemData={itemData} />
         </div>
     );
-}
+};
 
 export default ItemDetails;
