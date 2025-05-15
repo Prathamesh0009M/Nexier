@@ -8,7 +8,7 @@ const Home = () => {
       <div className='relative mx-auto flex flex-col w-11/12 items-center max-w-maxContent text-white justify-between '>
         <div className='w-full  h-auto mt-5  '>
 
-          <UpdateSlider />
+{/*           <UpdateSlider /> */}
 
         </div>
 
