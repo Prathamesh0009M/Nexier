@@ -53,12 +53,12 @@ const About = () => {
       </section>
 
 {/*       {/* Section 2: Meet the Creator */}
-      <section className='my-16 bg-gray-800 p-6 rounded-lg shadow-lg'>
+{/*       <section className='my-16 bg-gray-800 p-6 rounded-lg shadow-lg'>
         <h2 className='text-xl md:text-2xl font-bold mb-4'>Meet the Creator</h2>
         <p className='text-md md:text-lg'>
     "I’m Prathamesh Jadhav, a 3rd-year IT student at Dr. Babasaheb Ambedkar Technological University, Lonere. Driven by a passion for technology, I created this platform to make campus life more efficient and help students connect and trade academic resources easily."
         </p>
-      </section>
+      </section> */}
  */}
       {/* Section 3: Founding Story */}
       <section className='mt-6 mb-16'>
